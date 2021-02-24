@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let facebookRGB = UIColor(red: 23/255.0, green: 120/255.0, blue: 242/255.0, alpha: 1)
+    let facebookRGB = UIColor(red: 23/255.0, green: 121/255.0, blue: 242/255.0, alpha: 1)
     
     @Binding var text : String
     
