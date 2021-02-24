@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
     
-    let facebookRGB = UIColor(red: 23/255.0, green: 121/255.0, blue: 242/255.0, alpha: 1)
+    let facebookRGB = UIColor(red: 23/255.0, green: 120/255.0, blue: 242/255.0, alpha: 1)
     
     @Binding var text : String
     
@@ -42,22 +44,8 @@ struct ContentView: View {
                 
                 ScrollView(.vertical){
                     VStack {
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 3) {
-                               
-                                ForEach(stories, id: \.self ){ name in
-                                    Image(name)
-                                        .resizable()
-                                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                                        .frame(width: 140, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        .clipped()
-                                        .cornerRadius(20)
-                                    
-                                }
-                                
-                            }
-                            .padding()
-                        }
+                       
+                        StoriesView(stories: stories)
                             
                        posts(name: "Mark Zuckerberg", Post: "Hey guys i made this cool website to see if im cool or not!", imagename:"person1")
                         Spacer()
@@ -80,6 +68,32 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(text: .constant(""))
     }
 }
+
+struct StoriesView : View {
+    
+    let stories: [String]
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(spacing: 3) {
+               
+                ForEach(stories, id: \.self ){ name in
+                    Image(name)
+                        .resizable()
+                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .frame(width: 140, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .clipped()
+                        .cornerRadius(20)
+                    
+                }
+                
+            }
+            .padding()
+        }
+    }
+}
+
+
 
 
 struct posts : View {
